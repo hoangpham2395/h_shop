@@ -11,6 +11,6 @@ class Admin extends Authenticatable
 {
 	use Notifiable;
 
-    protected $_table = 'admin';
-    protected $_fillable = ['email', 'password', 'name', 'phone', 'level', 'ins_id', 'upd_id', 'del_flag'];
+    protected $table = 'admin';
+    protected $fillable = ['email', 'password', 'name', 'phone', 'level', 'ins_id', 'upd_id', 'del_flag'];
 }
