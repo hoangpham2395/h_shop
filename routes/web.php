@@ -15,4 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin', 'Backend\AdminController');
+Route::prefix('management')->group(function () {
+	Route::middleware(['auth'])->group(function () {
+		Route::resource('admin', 'Backend\AdminController');
+	});
+	// Login admin
+	Route::get('login', 'Backend\LoginController@getLogin');
+	Route::post('login', ['as' => 'admin.login', 'uses' => 'Backend\LoginController@postLogin']);
+	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Backend\LoginController@logout']);
+});
