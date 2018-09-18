@@ -3,11 +3,20 @@
 namespace App\Http\Controllers\Base;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\BaseController;
+use Illuminate\Support\Facades\Input;
 
-class BackendController extends Controller
+class BackendController extends BaseController
 {
+	protected $_alias;
+
+	public function __construct() 
+	{
+
+	}
+
     public function index() {
-        return view('layouts.backend.main');
+    	$entities = $this->getRepository()->getListForBackend(Input::all());
+        return view('backend.' . $this->_alias . '.index', compact('entities'));
     }
 }
