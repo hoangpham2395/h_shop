@@ -95,8 +95,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-list-ul"></i> List of Admin</a></li>
-                    <li><a href="#"><i class="fa fa-plus"></i> Add new admin</a></li>
+                    <li><a href="{{route('admin.index')}}"><i class="fa fa-list-ul"></i> List of Admin</a></li>
+                    <li><a href="{{route('admin.create')}}"><i class="fa fa-plus"></i> Add new admin</a></li>
                 </ul>
             </li>
         </ul>

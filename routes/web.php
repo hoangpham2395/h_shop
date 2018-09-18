@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 Route::prefix('management')->group(function () {
-	Route::middleware(['auth'])->group(function () {
+	Route::middleware(['checkLoginAdmin'])->group(function () {
+        Route::get('/', 'Backend\DashboardController@index');
+	    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::resource('admin', 'Backend\AdminController');
 	});
 	// Login admin
