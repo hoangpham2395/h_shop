@@ -12,9 +12,16 @@ class CustomRepository extends BaseRepository
 		return "";
 	}
 
-	public function getListForBackend($input) 
+	protected $_sortField = 'id';
+	protected $_sortType = 'DESC';
+	protected $_perPage = 10;
+
+	public function getListForBackend($input = [])
 	{
-		return $this->all();
+		return $this->scopeQuery(function ($query) use ($input) {
+                return $query->orderBy($this->_sortField, $this->_sortType)->where($input);
+            })
+            ->paginate($this->_perPage);
 	}
 }
 

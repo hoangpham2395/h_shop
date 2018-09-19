@@ -1,6 +1,6 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar sidebar-custom">
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar sidebar-custom">
+    <section class="sidebar">
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">

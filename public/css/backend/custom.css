@@ -1,6 +1,6 @@
 /* Sidebar */
 .sidebar-custom {
-	background-color: #1a2226;
+	background-color: #1a2226 !important;
 }
 
 .sidebar-custom li {
