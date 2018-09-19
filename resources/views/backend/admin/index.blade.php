@@ -27,7 +27,7 @@
                       	</div>  
                       	<div class="row">
                       		<div class="col-sm-12">
-                      			<table class="table table-border">
+                      			<table class="table table-bordered table-striped">
                       				<thead>
                       					<th>ID</th>
                       					<th>Email</th>
