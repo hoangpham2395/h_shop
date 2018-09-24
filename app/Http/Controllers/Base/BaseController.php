@@ -9,6 +9,7 @@ class BaseController extends Controller
 {
 	protected $_alias;
 	protected $_reposiroty;
+    protected $_validator;
 
     public function setRepository($repository) 
     {
@@ -18,5 +19,15 @@ class BaseController extends Controller
     public function getRepository() 
     {
     	return $this->_reposiroty;
+    }
+
+    public function setValidator($validator) 
+    {
+        $this->_validator = $validator;
+    }
+
+    public function getValidator() 
+    {
+        return $this->_validator;
     }
 }

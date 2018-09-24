@@ -5,18 +5,139 @@ namespace App\Http\Controllers\Base;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Base\BaseController;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+use Session;
 
 class BackendController extends BaseController
 {
 	protected $_alias;
+	protected $_rules;
 
-	public function __construct() 
+    public function __construct() {}
+
+	protected function _prepareData() 
 	{
-
+        return [];
 	}
 
-    public function index() {
+    protected function _prepareCreate() 
+    {
+        return [];
+    }
+
+    protected function _prepareStore() 
+    {
+        $params['ins_id'] = getAdminCurrent()->id;
+        $params['del_flag'] = 0;
+        return $params;
+    }
+
+    protected function _prepareShow() 
+    {
+        return [];
+    }
+
+    protected function _prepareEdit() 
+    {
+        return [];
+    }
+
+    protected function _prepareUpdate() 
+    {
+        $params['upd_id'] = getAdminCurrent()->id;
+        return $params;
+    }
+
+    protected function _prepareDestroy() 
+    {
+        $params['upd_id'] = getAdminCurrent()->id;
+        $params['del_flag'] = 1;
+        return $params;
+    }
+
+    public function index() 
+    {
+        $params = $this->_prepareData();
     	$entities = $this->getRepository()->getListForBackend(Input::all());
-        return view('backend.' . $this->_alias . '.index', compact('entities'));
+        return view('backend.' . $this->_alias . '.index', compact('entities', 'params'));
+    }
+
+    public function create() 
+    {
+        $params = $this->_prepareCreate();
+    	return view('backend.' . $this->_alias . '.create', compact('params'));
+    }
+
+    public function edit($id)
+    {
+        $params = $this->_prepareEdit();
+    	$entity = $this->getRepository()->findById($id);
+    	return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
+    }
+
+    public function show($id)
+    {
+        $params = $this->_prepareShow();
+        $entity = $this->getRepository()->findById($id);
+        return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
+    }
+
+    public function store(Request $request) 
+    {
+        $params = $request->all();
+
+    	$validator = $this->getValidator()->validateCreate($params);
+        if (!$validator) {
+            return redirect()->back()->withErrors($this->getValidator()->errors())->withInput();
+        }
+
+        $params = array_merge($params, $this->_prepareStore());
+
+    	DB::beginTransaction();
+        try {
+            $this->getRepository()->create($params);
+            DB::commit();
+            Session::flash('success', getMessaage('create_success'));
+            return redirect()->route($this->_alias . '.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+    }
+
+    public function update(Request $request, $id) 
+    {
+        $params = $request->all();
+
+        $validator = $this->getValidator()->validateUpdate($params, $id);
+        if (!$validator) {
+            return redirect()->back()->withErrors($this->getValidator()->errors())->withInput();
+        }
+
+        $params = array_merge($params, $this->_prepareUpdate());
+
+        DB::beginTransaction();
+        try {
+            $this->getRepository()->update($params, $id);
+            DB::commit();
+            Session::flash('success', getMessaage('update_success'));
+            return redirect()->route($this->_alias . '.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+    }
+
+    public function destroy($id) 
+    {
+        $params = $this->_prepareDestroy();
+        
+        // DB::beginTransaction();
+        // try {
+            $this->getRepository()->update($params, $id);
+            // DB::commit();
+            Session::flash('success', getMessaage('delete_success'));
+            return redirect()->route($this->_alias . '.index');
+        // } catch (\Exception $e) {
+        //     DB::rollBack();
+        // }
     }
 }

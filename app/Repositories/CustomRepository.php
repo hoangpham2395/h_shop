@@ -8,7 +8,8 @@ use Prettus\Repository\Eloquent\BaseRepository;
  */
 class CustomRepository extends BaseRepository
 {
-	function model() {
+	function model() 
+	{
 		return "";
 	}
 
@@ -16,12 +17,17 @@ class CustomRepository extends BaseRepository
 	protected $_sortType = 'DESC';
 	protected $_perPage = 10;
 
-	public function getListForBackend($input = [])
+	public function getListForBackend($params = [])
 	{
-		return $this->scopeQuery(function ($query) use ($input) {
-                return $query->orderBy($this->_sortField, $this->_sortType)->where($input);
+		return $this->scopeQuery(function ($query) use ($params) {
+                return $query->orderBy($this->_sortField, $this->_sortType)->where($params);
             })
             ->paginate($this->_perPage);
+	}
+
+	public function findById($id) 
+	{
+		return $this->find($id);
 	}
 }
 

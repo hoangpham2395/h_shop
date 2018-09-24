@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Model\Scopes\BaseScope;
+use Hash;
 
 class Admin extends Authenticatable
 {
@@ -21,5 +22,11 @@ class Admin extends Authenticatable
         parent::boot();
 
         static::addGlobalScope(new BaseScope);
+    }
+
+    // Set password before save DB
+    public function setPasswordAttribute($value) 
+    {
+    	return $this->attributes['password'] = Hash::make($value);
     }
 }

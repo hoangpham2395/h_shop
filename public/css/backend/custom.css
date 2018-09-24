@@ -1,3 +1,8 @@
+/* Custom */
+.red {
+	color: red !important;
+}
+
 /* Sidebar */
 .sidebar-custom {
 	background-color: #1a2226 !important;
