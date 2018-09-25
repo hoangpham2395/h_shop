@@ -6,7 +6,7 @@
 <script src="{{asset('js/lib/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/lib/demo.js')}}"></script>
-<!-- My js -->
-<script src="{{asset('js/backend/custom.js')}}"></script>
 <!-- iCheck -->
 <script src="{{asset('js/lib/icheck.min.js')}}"></script>
+<!-- My js -->
+<script src="{{asset('js/backend/common.js')}}"></script>

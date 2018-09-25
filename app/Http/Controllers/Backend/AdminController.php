@@ -20,12 +20,7 @@ class AdminController extends BackendController
 
 	protected function _prepareData() 
 	{
-		$params['levels'] = [
-			1 => 'Super admin',
-			2 => 'Admin',
-			3 => 'Product manager',
-			4 => 'Shipper'
-		];
+		$params['levels'] = getConfig('level');
 		return $params;
 	}
 

@@ -62,7 +62,14 @@ class BackendController extends BaseController
     public function index()
     {
         $params = $this->_prepareData();
-        $entities = $this->getRepository()->getListForBackend(Input::all());
+        $data = Input::all(); 
+
+        // Serve pagination
+        if (isset($data['page'])) {
+            unset($data['page']);
+        }
+
+        $entities = $this->getRepository()->getListForBackend($data);
         return view('backend.' . $this->_alias . '.index', compact('entities', 'params'));
     }
 
@@ -152,7 +159,6 @@ class BackendController extends BaseController
     protected function _unsetForDestroy($params = [])
     {
         $elements = getConfig('unset_element_for_destroy');
-        dd($elements);
         foreach ($elements as $element) {
             if (!isset($params[$element])) {
                 continue;

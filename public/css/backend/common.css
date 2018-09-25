@@ -1,5 +1,5 @@
 /* Custom */
-.red {
+.color-red {
     color: red !important;
 }
 
@@ -19,6 +19,10 @@
     margin-bottom: 0 !important;
 }
 
+.padding-bottom {
+	padding-bottom: 15px !important;
+}
+
 /* Sidebar */
 .sidebar-custom {
     background-color: #1a2226 !important;
@@ -26,4 +30,19 @@
 
 .sidebar-custom li {
     background-color: #222d32;
+}
+
+/* Table */
+.table-info {
+	padding-top: 8px;
+    white-space: nowrap;
+}
+.table-paginate {
+	margin: 0;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.table-paginate .pagination {
+	margin: 0;
 }

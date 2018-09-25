@@ -15,7 +15,7 @@ class CustomRepository extends BaseRepository
 
 	protected $_sortField = 'id';
 	protected $_sortType = 'DESC';
-	protected $_perPage = 10;
+	protected $_perPage = 3;
 
 	public function getListForBackend($params = [])
 	{

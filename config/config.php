@@ -10,5 +10,8 @@ return [
     'unset_element_for_destroy' => [
         'upd_id', 'created_at', 'updated_at', 'del_flag'
     ],
+    'limits' => [
+        10, 20, 50, 100
+    ],
 ];
 ?>

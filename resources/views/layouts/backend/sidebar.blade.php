@@ -82,8 +82,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-list-ul"></i> List of Jobs</a></li>
-                    <li><a href="#"><i class="fa fa-plus"></i> Add new job</a></li>
+                    <li><a href="{{route('jobs.index')}}"><i class="fa fa-list-ul"></i> List of Jobs</a></li>
+                    <li><a href="{{route('jobs.create')}}"><i class="fa fa-plus"></i> Add new job</a></li>
                 </ul>
             </li>
             <li class="header">ADMIN</li>

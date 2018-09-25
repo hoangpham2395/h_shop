@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{asset('css/lib/_all-skins.min.css')}}">
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-<!-- My style -->
-<link rel="stylesheet" type="text/css" href="{{asset('css/backend/custom.css')}}">
 <!-- iCheck -->
 <link rel="stylesheet" href="{{asset('css/lib/blue.css')}}">
+<!-- My style -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/backend/common.css')}}">

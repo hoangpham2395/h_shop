@@ -16,13 +16,13 @@ class Admin extends Authenticatable
 	use AdminPresenter;
 
     protected $table = 'admin';
+    protected $primaryKey = 'id';
     protected $fillable = ['email', 'password', 'name', 'phone', 'level', 'ins_id', 'upd_id', 'del_flag'];
 
     // Add scope global
     protected static function boot()
     {
         parent::boot();
-
         static::addGlobalScope(new BaseScope);
     }
 
