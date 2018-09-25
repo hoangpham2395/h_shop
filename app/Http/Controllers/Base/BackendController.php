@@ -50,8 +50,10 @@ class BackendController extends BaseController
         return $params;
     }
 
-    protected function _prepareDestroy()
+    protected function _prepareDestroy($id)
     {
+        $params = $this->getRepository()->findById($id)->toArray();
+        $this->_unsetForDestroy($params);
         $params['upd_id'] = getAdminCurrent()->id;
         $params['del_flag'] = 1;
         return $params;
@@ -132,7 +134,8 @@ class BackendController extends BaseController
 
     public function destroy($id)
     {
-        $params = $this->_prepareDestroy();
+        $params = $this->_prepareDestroy($id);
+
         DB::beginTransaction();
         try {
             $this->getRepository()->update($params, $id);
@@ -144,5 +147,17 @@ class BackendController extends BaseController
             DB::rollBack();
         }
         return redirect()->route($this->_alias . '.index')->withErrors(['delete' => getMessaage('delete_failed')]);
+    }
+
+    protected function _unsetForDestroy($params = [])
+    {
+        $elements = getConfig('unset_element_for_destroy');
+        dd($elements);
+        foreach ($elements as $element) {
+            if (!isset($params[$element])) {
+                continue;
+            }
+            unset($params[$element]);
+        }
     }
 }
