@@ -20,7 +20,7 @@ Route::prefix('management')->group(function () {
         Route::get('/', 'Backend\DashboardController@index');
 	    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::resource('admin', 'Backend\AdminController');
-		Route::resource('jobs', 'Backend\JobsController');
+		Route::resource('jobs', 'Backend\JobsController')->except(['create', 'edit']);
 	});
 	// Login admin
 	Route::get('login', 'Backend\LoginController@getLogin');
