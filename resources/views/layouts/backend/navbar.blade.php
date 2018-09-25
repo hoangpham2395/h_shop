@@ -23,8 +23,8 @@
                         <li class="user-header">
                             <img src="{{asset('images/avatar.png')}}" class="img-circle" alt="User Image">
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                {{getAdminCurrent()->name}} - Admin of <strong>H Shop</strong>
+                                <small>{{getAdminCurrent()->getRoleType()}}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->

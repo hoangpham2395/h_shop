@@ -10,69 +10,71 @@ use Session;
 
 class BackendController extends BaseController
 {
-	protected $_alias;
-	protected $_rules;
+    protected $_alias;
+    protected $_rules;
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
-	protected function _prepareData() 
-	{
-        return [];
-	}
-
-    protected function _prepareCreate() 
+    protected function _prepareData()
     {
         return [];
     }
 
-    protected function _prepareStore() 
+    protected function _prepareCreate()
+    {
+        return [];
+    }
+
+    protected function _prepareStore()
     {
         $params['ins_id'] = getAdminCurrent()->id;
         $params['del_flag'] = 0;
         return $params;
     }
 
-    protected function _prepareShow() 
+    protected function _prepareShow()
     {
         return [];
     }
 
-    protected function _prepareEdit() 
+    protected function _prepareEdit()
     {
         return [];
     }
 
-    protected function _prepareUpdate() 
+    protected function _prepareUpdate()
     {
         $params['upd_id'] = getAdminCurrent()->id;
         return $params;
     }
 
-    protected function _prepareDestroy() 
+    protected function _prepareDestroy()
     {
         $params['upd_id'] = getAdminCurrent()->id;
         $params['del_flag'] = 1;
         return $params;
     }
 
-    public function index() 
+    public function index()
     {
         $params = $this->_prepareData();
-    	$entities = $this->getRepository()->getListForBackend(Input::all());
+        $entities = $this->getRepository()->getListForBackend(Input::all());
         return view('backend.' . $this->_alias . '.index', compact('entities', 'params'));
     }
 
-    public function create() 
+    public function create()
     {
         $params = $this->_prepareCreate();
-    	return view('backend.' . $this->_alias . '.create', compact('params'));
+        return view('backend.' . $this->_alias . '.create', compact('params'));
     }
 
     public function edit($id)
     {
         $params = $this->_prepareEdit();
-    	$entity = $this->getRepository()->findById($id);
-    	return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
+        $entity = $this->getRepository()->findById($id);
+        return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
     }
 
     public function show($id)
@@ -82,18 +84,18 @@ class BackendController extends BaseController
         return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $params = $request->all();
 
-    	$validator = $this->getValidator()->validateCreate($params);
+        $validator = $this->getValidator()->validateCreate($params);
         if (!$validator) {
             return redirect()->back()->withErrors($this->getValidator()->errors())->withInput();
         }
 
         $params = array_merge($params, $this->_prepareStore());
 
-    	DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $this->getRepository()->create($params);
             DB::commit();
@@ -102,9 +104,10 @@ class BackendController extends BaseController
         } catch (\Exception $e) {
             DB::rollBack();
         }
+        return redirect()->route($this->_alias . '.index')->withErrors(['create' => getMessaage('create_failed')]);
     }
 
-    public function update(Request $request, $id) 
+    public function update(Request $request, $id)
     {
         $params = $request->all();
 
@@ -124,20 +127,22 @@ class BackendController extends BaseController
         } catch (\Exception $e) {
             DB::rollBack();
         }
+        return redirect()->route($this->_alias . '.index')->withErrors(['update' => getMessaage('update_failed')]);
     }
 
-    public function destroy($id) 
+    public function destroy($id)
     {
         $params = $this->_prepareDestroy();
-        
-        // DB::beginTransaction();
-        // try {
+        DB::beginTransaction();
+        try {
             $this->getRepository()->update($params, $id);
-            // DB::commit();
+
+            DB::commit();
             Session::flash('success', getMessaage('delete_success'));
             return redirect()->route($this->_alias . '.index');
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        // }
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+        return redirect()->route($this->_alias . '.index')->withErrors(['delete' => getMessaage('delete_failed')]);
     }
 }

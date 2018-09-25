@@ -1,13 +1,29 @@
 /* Custom */
 .red {
-	color: red !important;
+    color: red !important;
+}
+
+.padding {
+    padding: 15px !important;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.content-custom {
+    min-height: 0 !important;
+}
+
+.content-custom .alert {
+    margin-bottom: 0 !important;
 }
 
 /* Sidebar */
 .sidebar-custom {
-	background-color: #1a2226 !important;
+    background-color: #1a2226 !important;
 }
 
 .sidebar-custom li {
-	background-color: #222d32;
+    background-color: #222d32;
 }
