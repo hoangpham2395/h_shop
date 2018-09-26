@@ -1,8 +1,8 @@
 <header class="main-header">
     <!-- Logo -->
     <a href="#" class="logo">
-        <span class="logo-mini"><b>H</b></span>
-        <span class="logo-lg"><b>H</b> Shop</span>
+        <span class="logo-mini"><b>{{getConstant('APP_NAME_SHORT')}}</b></span>
+        <span class="logo-lg">{{getConstant('APP_NAME')}}</span>
     </a>
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->

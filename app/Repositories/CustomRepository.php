@@ -29,6 +29,7 @@ class CustomRepository extends BaseRepository
 			if (empty($params)) {
 				return $query;
 			}
+			// Search
 			foreach ($params as $key => $value) {
 				$query = $query->where($key, 'LIKE', '%' . $value . '%');
 			}
