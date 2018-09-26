@@ -30,4 +30,14 @@ class BaseController extends Controller
     {
         return $this->_validator;
     }
+
+    public function setAlias($alias) 
+    {
+        $this->_alias = $alias;
+    }
+
+    public function getAlias() 
+    {
+        return $this->_alias;
+    }
 }

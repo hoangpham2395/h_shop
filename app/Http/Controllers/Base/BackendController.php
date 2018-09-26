@@ -10,8 +10,9 @@ use Session;
 
 class BackendController extends BaseController
 {
-    protected $_alias;
-    protected $_rules;
+    protected $_sortField = 'id';
+    protected $_sortType = 'DESC';
+    protected $_perPage = 10;
 
     public function __construct()
     {
@@ -59,38 +60,39 @@ class BackendController extends BaseController
         return $params;
     }
 
+    protected function _beforeIndex() 
+    {
+        $this->getRepository()->setSortField($this->_sortField);
+        $this->getRepository()->setSortType($this->_sortType);
+        $this->getRepository()->setPerPage($this->_perPage);
+    }
+
     public function index()
     {
+        $this->_beforeIndex();
         $params = $this->_prepareData();
-        $data = Input::all(); 
-
-        // Serve pagination
-        if (isset($data['page'])) {
-            unset($data['page']);
-        }
-
-        $entities = $this->getRepository()->getListForBackend($data);
-        return view('backend.' . $this->_alias . '.index', compact('entities', 'params'));
+        $entities = $this->getRepository()->getListForBackend(Input::all());
+        return view('backend.' . $this->getAlias() . '.index', compact('entities', 'params'));
     }
 
     public function create()
     {
         $params = $this->_prepareCreate();
-        return view('backend.' . $this->_alias . '.create', compact('params'));
+        return view('backend.' . $this->getAlias() . '.create', compact('params'));
     }
 
     public function edit($id)
     {
         $params = $this->_prepareEdit();
         $entity = $this->getRepository()->findById($id);
-        return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
+        return view('backend.' . $this->getAlias() . '.edit', compact('entity', 'params'));
     }
 
     public function show($id)
     {
         $params = $this->_prepareShow();
         $entity = $this->getRepository()->findById($id);
-        return view('backend.' . $this->_alias . '.edit', compact('entity', 'params'));
+        return view('backend.' . $this->getAlias() . '.edit', compact('entity', 'params'));
     }
 
     public function store(Request $request)
@@ -109,11 +111,11 @@ class BackendController extends BaseController
             $this->getRepository()->create($params);
             DB::commit();
             Session::flash('success', getMessaage('create_success'));
-            return redirect()->route($this->_alias . '.index');
+            return redirect()->route($this->getAlias() . '.index');
         } catch (\Exception $e) {
             DB::rollBack();
         }
-        return redirect()->route($this->_alias . '.index')->withErrors(['create' => getMessaage('create_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['create' => getMessaage('create_failed')]);
     }
 
     public function update(Request $request, $id)
@@ -132,11 +134,11 @@ class BackendController extends BaseController
             $this->getRepository()->update($params, $id);
             DB::commit();
             Session::flash('success', getMessaage('update_success'));
-            return redirect()->route($this->_alias . '.index');
+            return redirect()->route($this->getAlias() . '.index');
         } catch (\Exception $e) {
             DB::rollBack();
         }
-        return redirect()->route($this->_alias . '.index')->withErrors(['update' => getMessaage('update_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['update' => getMessaage('update_failed')]);
     }
 
     public function destroy($id)
@@ -149,11 +151,11 @@ class BackendController extends BaseController
 
             DB::commit();
             Session::flash('success', getMessaage('delete_success'));
-            return redirect()->route($this->_alias . '.index');
+            return redirect()->route($this->getAlias() . '.index');
         } catch (\Exception $e) {
             DB::rollBack();
         }
-        return redirect()->route($this->_alias . '.index')->withErrors(['delete' => getMessaage('delete_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['delete' => getMessaage('delete_failed')]);
     }
 
     protected function _unsetForDestroy($params = [])

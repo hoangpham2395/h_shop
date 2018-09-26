@@ -32,7 +32,7 @@
 											<span class="input-group-addon">
 												<i class="fa fa-suitcase"></i>
 											</span>
-											{!! Form::text('job_name', null, ['class' => 'form-control']) !!}
+											{!! Form::text('job_name', Request::input('job_name'), ['class' => 'form-control']) !!}
 										</div>
 									</div>
 								</div>
@@ -67,7 +67,7 @@
                     		@endphp
                             <div class="col-sm-6">
                             	Show &nbsp;
-                            	<select class="" name="limit">
+                            	<select id="limit" name="limit">
                             		@foreach ($limits as $limit)
 										<option value="{{$limit}}">{{$limit}}</option>
                             		@endforeach
@@ -119,7 +119,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
-                                <th width="80" class="text-center">ID</th>
+                                <th width="50" class="text-center">ID</th>
                                 <th>Job name</th>
                                 <th width="80" class="text-center">Edit</th>
                                 <th width="80" class="text-center">Delete</th>
@@ -127,7 +127,7 @@
                                 <tbody>
                                 @foreach ($entities as $entity)
                                     <tr>
-                                        <td>{{ $entity->id }}</td>
+                                        <td class="text-center">{{ $entity->id }}</td>
                                         <td>{{ $entity->job_name }}</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_upd_{{$entity->id}}"><i class="fa fa-pencil"></i></button>

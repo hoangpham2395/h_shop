@@ -13,21 +13,63 @@ class CustomRepository extends BaseRepository
 		return "";
 	}
 
-	protected $_sortField = 'id';
-	protected $_sortType = 'DESC';
-	protected $_perPage = 3;
+	protected $_sortField;
+	protected $_sortType;
+	protected $_perPage;
 
 	public function getListForBackend($params = [])
 	{
+		// Serve pagination
+		if (isset($params['page'])) {
+			unset($params['page']);
+		}
+        // Get data
 		return $this->scopeQuery(function ($query) use ($params) {
-                return $query->orderBy($this->_sortField, $this->_sortType)->where($params);
-            })
-            ->paginate($this->_perPage);
+			$query = $query->orderBy($this->getSortField(), $this->getSortType());
+			if (empty($params)) {
+				return $query;
+			}
+			foreach ($params as $key => $value) {
+				$query = $query->where($key, 'LIKE', '%' . $value . '%');
+			}
+			return $query;
+		})
+		->paginate($this->getPerPage());
 	}
 
 	public function findById($id) 
 	{
 		return $this->find($id);
+	}
+
+	public function setSortField($sortField) 
+	{
+		$this->_sortField = $sortField;
+	}
+
+	public function getSortField() 
+	{
+		return $this->_sortField;
+	}
+
+	public function setSortType($sortType) 
+	{
+		$this->_sortType = $sortType;
+	}
+
+	public function getSortType() 
+	{
+		return $this->_sortType;
+	}
+
+	public function setPerPage($perPage) 
+	{
+		$this->_perPage = $perPage;
+	}
+
+	public function getPerPage() 
+	{
+		return $this->_perPage;
 	}
 }
 
