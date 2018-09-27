@@ -51,14 +51,14 @@
                                         </td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                                                    data-target="#myModal">
+                                                    data-target="#modal_del_{{$entity->id}}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
                                     {!! Form::open(['route' => ['admin.destroy', $entity->id], 'method' => 'DELETE']) !!}
 
                                     <!-- Modal -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="modal_del_{{$entity->id}}" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">

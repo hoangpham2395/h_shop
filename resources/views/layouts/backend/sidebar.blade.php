@@ -70,8 +70,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-list-ul"></i> List of Employees</a></li>
-                    <li><a href="#"><i class="fa fa-plus"></i> Add new employees</a></li>
+                    <li><a href="{{route('employees.index')}}"><i class="fa fa-list-ul"></i> List of Employees</a></li>
+                    <li><a href="{{route('employees.create')}}"><i class="fa fa-plus"></i> Add new employees</a></li>
                 </ul>
             </li>
             <li>

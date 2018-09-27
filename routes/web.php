@@ -21,6 +21,7 @@ Route::prefix('management')->group(function () {
 	    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::resource('admin', 'Backend\AdminController');
 		Route::resource('jobs', 'Backend\JobsController')->except(['create', 'edit']);
+		Route::resource('employees', 'Backend\EmployeesController');
 	});
 	// Login admin
 	Route::get('login', 'Backend\LoginController@getLogin');
