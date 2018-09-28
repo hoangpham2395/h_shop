@@ -25,7 +25,8 @@ class BackendController extends BaseController
 
     protected function _prepareCreate()
     {
-        return [];
+        $params['alias'] = $this->getAlias();
+        return $params;
     }
 
     protected function _prepareStore()
@@ -42,7 +43,8 @@ class BackendController extends BaseController
 
     protected function _prepareEdit()
     {
-        return [];
+        $params['alias'] = $this->getAlias();
+        return $params;
     }
 
     protected function _prepareUpdate()

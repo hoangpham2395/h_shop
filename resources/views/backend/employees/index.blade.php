@@ -22,8 +22,23 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-6"></div>
+                            @php
+                                $limits = getConfig('limits');
+                            @endphp
+                            <div class="col-sm-6">
+                                Select &nbsp;
+                                <select id="limit" name="limit">
+                                    @foreach ($limits as $limit)
+                                        <option value="{{$limit}}">{{$limit}}</option>
+                                    @endforeach
+                                </select>
+                                &nbsp; entities.
+                            </div>
+                            <div class="col-sm-6">
+                                <a href="{{route('employees.create')}}" class="btn btn-success pull-right">
+                                    <i class="fa fa-plus"></i> Add new employee
+                                </a>
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
@@ -86,7 +101,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-5">Showing 1 to 10 of 10 entities</div>
-                            <div class="col-sm-7">{{ $entities->links() }}</div>
+                            <div class="col-sm-7">{{ $entities->appends(Request::except('page'))->render() }}</div>
                         </div>
                     </div>
                 </div>
