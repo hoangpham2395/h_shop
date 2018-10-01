@@ -23,6 +23,12 @@ class BackendController extends BaseController
         return [];
     }
 
+    protected function _prepareIndex()
+    {
+        $params['alias'] = $this->getAlias();
+        return $params;
+    }
+
     protected function _prepareCreate()
     {
         $params['alias'] = $this->getAlias();
@@ -72,7 +78,7 @@ class BackendController extends BaseController
     public function index()
     {
         $this->_beforeIndex();
-        $params = $this->_prepareData();
+        $params = $this->_prepareIndex();
         $entities = $this->getRepository()->getListForBackend(Input::all());
         return view('backend.' . $this->getAlias() . '.index', compact('entities', 'params'));
     }

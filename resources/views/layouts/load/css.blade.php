@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <!-- iCheck -->
 <link rel="stylesheet" href="{{asset('css/lib/iCheck/blue.css')}}">
-<!-- Jquery UI 1.12.1 -->
-<link rel="stylesheet" href="{{asset('css/lib/jquery_ui/jquery-ui.min.css')}}">
+<!-- Bootstrap datepicker 1.6.4 -->
+<link rel="stylesheet" href="{{asset('css/lib/bootstrap-datepicker.min.css')}}">
 <!-- Jasny bootstrap -->
 <link rel="stylesheet" href="{{asset('css/lib/jasny-bootstrap.min.css')}}">
 <!-- My style -->

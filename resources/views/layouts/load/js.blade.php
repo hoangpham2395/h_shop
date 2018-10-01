@@ -1,9 +1,9 @@
 <!-- jQuery 3 -->
 <script src="{{asset('js/lib/jquery.min.js')}}"></script>
-<!-- Jquery UI 1.12.1 -->
-<script src="{{asset('js/lib/jquery-ui.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('js/lib/bootstrap.min.js')}}"></script>
+<!-- Bootstrap datepicker 1.6.4 -->
+<script src="{{asset('js/lib/bootstrap-datepicker.min.js')}}"></script>
 <!-- Jasny bootstrap -->
 <script src="{{asset('js/lib/jasny-bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->

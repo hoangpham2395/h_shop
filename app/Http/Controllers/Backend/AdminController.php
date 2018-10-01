@@ -24,6 +24,13 @@ class AdminController extends BackendController
 		return $params;
 	}
 
+	protected function _prepareIndex() 
+	{
+		$params = $this->_prepareData();
+		$params = array_merge($params, parent::_prepareCreate());
+		return $params;
+	}
+
 	protected function _prepareCreate() 
 	{
 		$params = $this->_prepareData();

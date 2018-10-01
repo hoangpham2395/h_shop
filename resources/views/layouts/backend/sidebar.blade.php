@@ -13,13 +13,13 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="active">
-                <a href="#">
+            <li id="dashboard">
+                <a href="{{route('dashboard')}}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
             <li class="header">PRODUCTS</li>
-            <li class="treeview">
+            <li id="products" class="treeview">
                 <a href="#">
                     <i class="fa fa-mobile"></i> <span>Products</span>
                     <span class="pull-right-container">
@@ -31,7 +31,7 @@
                     <li><a href="#"><i class="fa fa-plus"></i> Add new products</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li id="categories" class="treeview">
                 <a href="#">
                     <i class="fa fa-barcode"></i> <span>Categories</span>
                     <span class="pull-right-container">
@@ -43,7 +43,7 @@
                     <li><a href="#"><i class="fa fa-plus"></i> Add new category</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li id="brands" class="treeview">
                 <a href="#">
                     <i class="fa fa-apple"></i> <span>Brands</span>
                     <span class="pull-right-container">
@@ -56,13 +56,13 @@
                 </ul>
             </li>
             <li class="header">ORDERS</li>
-            <li>
+            <li id="orders">
                 <a href="#">
                     <i class="fa fa-shopping-cart"></i> <span>List of Orders</span>
                 </a>
             </li>
             <li class="header">EMPLOYEES</li>
-            <li class="treeview">
+            <li id="employees" class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Employees</span>
                     <span class="pull-right-container">
@@ -74,13 +74,13 @@
                     <li><a href="{{route('employees.create')}}"><i class="fa fa-plus"></i> Add new employees</a></li>
                 </ul>
             </li>
-            <li>
+            <li id="jobs">
                 <a href="{{route('jobs.index')}}">
                     <i class="fa fa-suitcase"></i> <span>Jobs</span>
                 </a>
             </li>
             <li class="header">ADMIN</li>
-            <li class="treeview">
+            <li id="admin" class="treeview">
                 <a href="#">
                     <i class="fa fa-user"></i> <span>Admin</span>
                     <span class="pull-right-container">
@@ -96,3 +96,7 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+
+<script type="text/javascript">
+    var alias = {!! json_encode($params['alias']) !!}
+</script>

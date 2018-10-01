@@ -9,6 +9,7 @@ class DashboardController extends BackendController
 {
     public function index()
     {
-        return view('backend.dashboard.dashboard');
+    	$params['alias'] = 'dashboard';
+        return view('backend.dashboard.dashboard', compact('params'));
     }
 }

@@ -10,7 +10,7 @@ class Employee extends Base
 {
     protected $table = 'employees';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'email', 'phone', 'avatar', 'address', 'id_number', 'bank_account', 'description', 'ins_id', 'upd_id', 'del_flag'];
+    protected $fillable = ['name', 'email', 'phone', 'birth_day', 'avatar', 'address', 'id_number', 'bank_account', 'description', 'ins_id', 'upd_id', 'del_flag'];
 
     // Add scope global
     protected static function boot() 
