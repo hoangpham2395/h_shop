@@ -4,6 +4,8 @@
 <script src="{{asset('js/lib/jquery-ui.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('js/lib/bootstrap.min.js')}}"></script>
+<!-- Jasny bootstrap -->
+<script src="{{asset('js/lib/jasny-bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('js/lib/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

@@ -7,6 +7,22 @@
     padding: 15px !important;
 }
 
+.padding-top {
+    padding-top: 15px !important;
+}
+
+.padding-right {
+    padding-right: 15px !important;
+}
+
+.padding-bottom {
+    padding-bottom: 15px !important;
+}
+
+.padding-left {
+    padding-left: 15px !important;
+}
+
 .no-margin {
     margin: 0;
 }
@@ -17,10 +33,6 @@
 
 .content-custom .alert {
     margin-bottom: 0 !important;
-}
-
-.padding-bottom {
-	padding-bottom: 15px !important;
 }
 
 /* Sidebar */

@@ -19,4 +19,9 @@ function getAdminCurrent()
 {
 	return Auth::user();
 }
+
+function getAvatarDefault()
+{
+    return asset(getConfig('avatar_default'));
+}
 ?>

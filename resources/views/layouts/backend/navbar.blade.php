@@ -15,15 +15,15 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{asset('images/avatar.png')}}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <img src="{{getAvatarDefault()}}" class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{getAdminCurrent()->name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="{{asset('images/avatar.png')}}" class="img-circle" alt="User Image">
+                            <img src="{{getAvatarDefault()}}" class="img-circle" alt="User Image">
                             <p>
-                                {{getAdminCurrent()->name}} - Admin of <strong>H Shop</strong>
+                                {{getAdminCurrent()->name}} - Admin of <strong>{{getConstant('APP_NAME')}}</strong>
                                 <small>{{getAdminCurrent()->getRoleType()}}</small>
                             </p>
                         </li>

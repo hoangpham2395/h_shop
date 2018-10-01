@@ -14,5 +14,7 @@
 <link rel="stylesheet" href="{{asset('css/lib/iCheck/blue.css')}}">
 <!-- Jquery UI 1.12.1 -->
 <link rel="stylesheet" href="{{asset('css/lib/jquery_ui/jquery-ui.min.css')}}">
+<!-- Jasny bootstrap -->
+<link rel="stylesheet" href="{{asset('css/lib/jasny-bootstrap.min.css')}}">
 <!-- My style -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/backend/common.css')}}">
