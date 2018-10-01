@@ -24,7 +24,7 @@
             {!! Form::label('birth_day', 'Birth day:') !!} <span class="color-red">[<i class="fa fa-asterisk"></i>]</span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                {!! Form::text('birth_day', null, ['class' => 'form-control']) !!}
+                {!! Form::text('birth_day', null, ['class' => 'form-control datepicker']) !!}
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <!-- Bootstrap 3.3.7 -->
 <link rel="stylesheet" href="{{asset('css/lib/bootstrap.min.css')}}">
-<!-- Font Awesome -->
+<!-- Font Awesome 4.7 -->
 <link rel="stylesheet" href="{{asset('css/lib/font-awesome.min.css')}}">
 <!-- Ionicons -->
 <link rel="stylesheet" href="{{asset('css/lib/ionicons.min.css')}}">
@@ -11,6 +11,8 @@
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <!-- iCheck -->
-<link rel="stylesheet" href="{{asset('css/lib/blue.css')}}">
+<link rel="stylesheet" href="{{asset('css/lib/iCheck/blue.css')}}">
+<!-- Jquery UI 1.12.1 -->
+<link rel="stylesheet" href="{{asset('css/lib/jquery_ui/jquery-ui.min.css')}}">
 <!-- My style -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/backend/common.css')}}">
