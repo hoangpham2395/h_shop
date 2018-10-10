@@ -16,7 +16,7 @@ class EmployeesValidator extends BaseValidator
             'phone' => 'required|digits:10',
             'birth_day' => 'required|date',
             'address' => 'required|max:256',
-            'id_number' => 'required|numeric|max:20',
+            'id_number' => 'required|max:20',
             'bank_account' => 'nullable|max:20'
         ],
         ValidatorInterface::RULE_UPDATE => [
@@ -25,7 +25,7 @@ class EmployeesValidator extends BaseValidator
             'phone' => 'required|digits:10',
             'birth_day' => 'required|date',
             'address' => 'required|max:256',
-            'id_number' => 'required|numeric|max:20',
+            'id_number' => 'required|max:20',
             'bank_account' => 'nullable|max:20'
         ]
 	];

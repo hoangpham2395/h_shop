@@ -20,12 +20,57 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-info">
                     <div class="box-header">
+                        <h3 class="box-title">Search</h3>
+                    </div>
+                    <div class="box-body">
+                        {!! Form::open(['route' => 'admin.index', 'method' => 'GET']) !!}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('name', 'Name') !!}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        {!! Form::text('name', Request::input('name'), ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('email', 'Email') !!}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                        {!! Form::text('email', Request::input('email'), ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="margin-top"></div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <a href="{{route('admin.index')}}" class="btn btn-default">
+                                        <i class="fa fa-refresh"></i> Reset
+                                    </a>
+                                    {!! Form::button('<i class="fa fa-search"></i> Search', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                </div>
+                            </div>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box box-info">
+                    <div class="box-header">
                         <h3 class="box-title">List of Admin</h3>
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-6"></div>
+                            <div class="col-md-12 text-right padding-bottom">
+                                <a href="{{route('admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add new admin</a>
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">

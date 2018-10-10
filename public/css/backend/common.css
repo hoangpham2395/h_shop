@@ -3,6 +3,10 @@
     color: red !important;
 }
 
+.no-padding {
+    padding: 0 !important;
+}
+
 .padding {
     padding: 15px !important;
 }
@@ -25,6 +29,26 @@
 
 .no-margin {
     margin: 0;
+}
+
+.margin {
+    margin: 15px !important;
+}
+
+.margin-top {
+    margin-top: 15px !important;
+}
+
+.margin-right {
+    margin-right: 15px !important;
+}
+
+.margin-bottom {
+    margin-bottom: 15px !important;
+}
+
+.margin-left {
+    margin-left: 15px !important;
 }
 
 .content-custom {
